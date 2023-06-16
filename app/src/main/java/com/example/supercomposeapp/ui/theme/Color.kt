@@ -9,9 +9,10 @@ val Teal200 = Color(0xFF03DAC5)
 
 
 val darkMagneta = Color(0xFFF7038E)
+val textColorLightGray = Color(0xFF7E7E7E)
+val white = Color(0xFFF3F3F3)
 val darkGray = Color(0xFF1a1717)
 val darkBlue = Color(0xFF18192b)
-val white = Color(0xFFF3F3F3)
 val gray = Color(0xFF3F3F3F)
 val orange = Color(0xFFdb660d)
 val blueGray = Color(0xFF404352)

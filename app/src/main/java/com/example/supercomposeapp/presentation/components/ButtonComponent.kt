@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -55,7 +57,7 @@ fun ButtonComponent(
         } else {
             Text(
                 fontFamily = Bariol,
-                style = Typography.h3,
+                style = Typography.h1,
                 text = text
             )
         }
@@ -64,7 +66,7 @@ fun ButtonComponent(
 
 @Preview(showBackground = true)
 @Composable
-fun SuperAppButtonComponenPreview() {
+fun ButtonComponentPreview() {
     Column() {
 
         ButtonComponent(

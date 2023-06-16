@@ -15,14 +15,19 @@ val Bariol = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    h3 = TextStyle(
+    h1 = TextStyle(
         fontFamily = Bariol,
         fontWeight = FontWeight.Bold,
         fontSize = 25.sp
     ),
-    h5 = TextStyle(
+    h2 = TextStyle(
         fontFamily = Bariol,
         fontWeight = FontWeight.Normal,
         fontSize = 25.sp
+    ),
+    body1 = TextStyle(
+        fontFamily = Bariol,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp
     )
 )
