@@ -1,10 +1,12 @@
 package com.example.supercomposeapp.presentation.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,7 +18,7 @@ import com.example.supercomposeapp.ui.theme.darkMagneta
 import com.example.supercomposeapp.ui.theme.white
 
 @Composable
-fun MagnetaButtonComponent(
+fun ButtonComponent(
     text: String,
     backgroundColor: Color,
     contentColor: Color,
@@ -63,13 +65,25 @@ fun MagnetaButtonComponent(
 @Preview(showBackground = true)
 @Composable
 fun SuperAppButtonComponenPreview() {
-    MagnetaButtonComponent(
-        text = "Login",
-        backgroundColor = darkMagneta,
-        contentColor = white,
-        onButtonClick = { /*TODO*/ },
-        isLoading = false,
-        modifier = Modifier.fillMaxWidth(),
-        borderColor = white
-    )
+    Column() {
+
+        ButtonComponent(
+            text = "Login",
+            backgroundColor = darkMagneta,
+            contentColor = white,
+            onButtonClick = { /*TODO*/ },
+            isLoading = false,
+            modifier = Modifier.fillMaxWidth(),
+            borderColor = white
+        )
+        ButtonComponent(
+            text = "Signup",
+            backgroundColor = white,
+            contentColor = darkMagneta,
+            onButtonClick = { /*TODO*/ },
+            isLoading = false,
+            modifier = Modifier.fillMaxWidth(),
+            borderColor = darkMagneta
+        )
+    }
 }
