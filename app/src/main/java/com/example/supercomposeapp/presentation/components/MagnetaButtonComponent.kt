@@ -11,67 +11,65 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.supercomposeapp.ui.theme.Bariol
+import com.example.supercomposeapp.ui.theme.Typography
 import com.example.supercomposeapp.ui.theme.darkMagneta
 import com.example.supercomposeapp.ui.theme.white
 
 @Composable
-fun SuperWhiteButtonComponent(
-    modifier: Modifier,
+fun MagnetaButtonComponent(
+    text: String,
     backgroundColor: Color,
     contentColor: Color,
-    text: String,
-    isLoading: Boolean,
-    onButtonClick: () -> Unit, // this is a function which doesn't take any parameters as input and does not return anything
     enabled: Boolean = true,
+    onButtonClick: () -> Unit,
+    isLoading: Boolean,
+    modifier: Modifier = Modifier,
     borderColor: Color
 ) {
     Button(
         modifier = modifier,
-        onClick = { onButtonClick() },
+        onClick = {
+            onButtonClick()
+        },
         shape = RoundedCornerShape(25.dp),
-        enabled = enabled,
-
         colors = ButtonDefaults.buttonColors(
             backgroundColor = backgroundColor,
             contentColor = contentColor,
-            disabledContentColor = contentColor,
             disabledBackgroundColor = backgroundColor,
-
-            ),
+            disabledContentColor = contentColor
+        ),
+        enabled = enabled,
         border = BorderStroke(
             width = 2.dp,
             color = borderColor
         )
+
     ) {
         if (isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.size(20.dp),
-                color = contentColor
+                color = contentColor,
+                modifier = Modifier.size(20.dp)
             )
         } else {
             Text(
-                text = text,
-                style = MaterialTheme.typography.h3,
-                fontFamily = Bariol
-
+                fontFamily = Bariol,
+                style = Typography.h3,
+                text = text
             )
         }
-
     }
-
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun SuperWhiteButtonComponentPreview() {
-    SuperWhiteButtonComponent(
-        modifier = Modifier.fillMaxWidth(),
-        backgroundColor = white,
-        contentColor = darkMagneta,
-        text = "Sign Up",
+fun SuperAppButtonComponenPreview() {
+    MagnetaButtonComponent(
+        text = "Login",
+        backgroundColor = darkMagneta,
+        contentColor = white,
+        onButtonClick = { /*TODO*/ },
         isLoading = false,
-        onButtonClick = {},
-        enabled = true,
-        borderColor = darkMagneta
+        modifier = Modifier.fillMaxWidth(),
+        borderColor = white
     )
 }

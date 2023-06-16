@@ -18,11 +18,11 @@ val Typography = Typography(
     h3 = TextStyle(
         fontFamily = Bariol,
         fontWeight = FontWeight.Bold,
-        fontSize = 15.sp
+        fontSize = 25.sp
     ),
     h5 = TextStyle(
         fontFamily = Bariol,
         fontWeight = FontWeight.Normal,
-        fontSize = 20.sp
+        fontSize = 25.sp
     )
 )
