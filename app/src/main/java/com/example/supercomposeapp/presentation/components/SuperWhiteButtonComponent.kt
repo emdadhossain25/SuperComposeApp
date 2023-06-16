@@ -1,5 +1,6 @@
 package com.example.supercomposeapp.presentation.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,54 +15,63 @@ import com.example.supercomposeapp.ui.theme.darkMagneta
 import com.example.supercomposeapp.ui.theme.white
 
 @Composable
-fun SuperAppButtonComponent(
-    text: String,
+fun SuperWhiteButtonComponent(
+    modifier: Modifier,
     backgroundColor: Color,
     contentColor: Color,
-    enabled: Boolean = true,
-    onButtonClick: () -> Unit,
+    text: String,
     isLoading: Boolean,
-    modifier: Modifier = Modifier
+    onButtonClick: () -> Unit, // this is a function which doesn't take any parameters as input and does not return anything
+    enabled: Boolean = true,
+    borderColor: Color
 ) {
     Button(
         modifier = modifier,
-        onClick = {
-            onButtonClick()
-        },
+        onClick = { onButtonClick() },
         shape = RoundedCornerShape(25.dp),
+        enabled = enabled,
+
         colors = ButtonDefaults.buttonColors(
             backgroundColor = backgroundColor,
             contentColor = contentColor,
+            disabledContentColor = contentColor,
             disabledBackgroundColor = backgroundColor,
-            disabledContentColor = contentColor
-        ),
-        enabled = enabled
 
+            ),
+        border = BorderStroke(
+            width = 2.dp,
+            color = borderColor
+        )
     ) {
         if (isLoading) {
             CircularProgressIndicator(
-                color = contentColor,
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier.size(20.dp),
+                color = contentColor
             )
         } else {
             Text(
                 text = text,
-                fontFamily = Bariol,
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.h3,
+                fontFamily = Bariol
+
             )
         }
+
     }
+
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun SuperAppButtonComponenPreview() {
-    SuperAppButtonComponent(
-        text = "Login",
-        backgroundColor = darkMagneta,
-        contentColor = white,
-        onButtonClick = { /*TODO*/ },
+fun SuperWhiteButtonComponentPreview() {
+    SuperWhiteButtonComponent(
+        modifier = Modifier.fillMaxWidth(),
+        backgroundColor = white,
+        contentColor = darkMagneta,
+        text = "Sign Up",
         isLoading = false,
-        modifier = Modifier.fillMaxWidth()
+        onButtonClick = {},
+        enabled = true,
+        borderColor = darkMagneta
     )
 }
