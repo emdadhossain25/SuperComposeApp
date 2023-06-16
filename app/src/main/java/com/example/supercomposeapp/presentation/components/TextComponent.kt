@@ -40,7 +40,6 @@ fun TextComponent(
 @Composable
 fun TextComponentPreview() {
     Column() {
-
         TextComponent(
             modifier = Modifier.fillMaxWidth(),
             text = "About You",
