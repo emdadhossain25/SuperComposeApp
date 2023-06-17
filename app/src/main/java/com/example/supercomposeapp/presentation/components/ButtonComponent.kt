@@ -13,7 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.supercomposeapp.ui.theme.Bariol
 import com.example.supercomposeapp.ui.theme.Typography
 import com.example.supercomposeapp.ui.theme.darkMagneta
@@ -28,7 +30,9 @@ fun ButtonComponent(
     onButtonClick: () -> Unit,
     isLoading: Boolean,
     modifier: Modifier = Modifier,
-    borderColor: Color
+    borderColor: Color,
+    fontSize: TextUnit = 20.sp
+
 ) {
     Button(
         modifier = modifier,
@@ -58,7 +62,8 @@ fun ButtonComponent(
             Text(
                 fontFamily = Bariol,
                 style = Typography.h1,
-                text = text
+                text = text,
+                fontSize = fontSize
             )
         }
     }
