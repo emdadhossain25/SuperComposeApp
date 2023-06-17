@@ -3,6 +3,7 @@ package com.example.supercomposeapp.presentation.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -12,7 +13,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,11 +34,13 @@ fun ButtonComponent(
     isLoading: Boolean,
     modifier: Modifier = Modifier,
     borderColor: Color,
-    fontSize: TextUnit = 20.sp
+    buttonHeight: Dp,
+    fontSize: TextUnit = 15.sp,
+    style: TextStyle
 
 ) {
     Button(
-        modifier = modifier,
+        modifier = modifier.height(buttonHeight),
         onClick = {
             onButtonClick()
         },
@@ -61,7 +66,7 @@ fun ButtonComponent(
         } else {
             Text(
                 fontFamily = Bariol,
-                style = Typography.h1,
+                style = style,
                 text = text,
                 fontSize = fontSize
             )
@@ -69,7 +74,10 @@ fun ButtonComponent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
 @Composable
 fun ButtonComponentPreview() {
     Column() {
@@ -81,7 +89,11 @@ fun ButtonComponentPreview() {
             onButtonClick = { /*TODO*/ },
             isLoading = false,
             modifier = Modifier.fillMaxWidth(),
-            borderColor = white
+            borderColor = white,
+            buttonHeight = 40.dp,
+            fontSize = 20.sp,
+            style = Typography.h1
+
         )
         ButtonComponent(
             text = "Signup",
@@ -90,7 +102,11 @@ fun ButtonComponentPreview() {
             onButtonClick = { /*TODO*/ },
             isLoading = false,
             modifier = Modifier.fillMaxWidth(),
-            borderColor = darkMagneta
+            borderColor = darkMagneta,
+            buttonHeight = 30.dp,
+            fontSize = 12.sp,
+            style = Typography.h2
+
         )
     }
 }

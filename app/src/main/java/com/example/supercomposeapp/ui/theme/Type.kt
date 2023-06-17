@@ -17,17 +17,10 @@ val Bariol = FontFamily(
 val Typography = Typography(
     h1 = TextStyle(
         fontFamily = Bariol,
-        fontWeight = FontWeight.Bold,
-        fontSize = 25.sp
+        fontWeight = FontWeight.Bold
     ),
     h2 = TextStyle(
         fontFamily = Bariol,
-        fontWeight = FontWeight.Normal,
-        fontSize = 25.sp
+        fontWeight = FontWeight.Normal
     ),
-    body1 = TextStyle(
-        fontFamily = Bariol,
-        fontWeight = FontWeight.Normal,
-        fontSize = 20.sp
-    )
 )
