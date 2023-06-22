@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.runtime.Composable
@@ -28,7 +27,7 @@ import com.example.supercomposeapp.ui.theme.white
 
 
 @Composable
-fun UserInformationScreen() {
+fun LoginScreen() {
     Column(
         modifier = Modifier
             .padding(top = 40.dp, start = 50.dp, end = 50.dp, bottom = 20.dp),
@@ -128,6 +127,6 @@ fun UserInformationScreen() {
     showSystemUi = true
 )
 @Composable
-fun UserInformationScreenPreview() {
-    UserInformationScreen()
+fun LoginScreenPreview() {
+    LoginScreen()
 }
