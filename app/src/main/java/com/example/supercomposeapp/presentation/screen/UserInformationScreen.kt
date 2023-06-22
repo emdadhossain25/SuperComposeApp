@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -46,14 +47,35 @@ fun UserInformationScreen() {
             textStyle = Typography.h2
         )
         TextFieldComponent(
-            description = "Email Address",
+            description = "user name",
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 10.dp),
-            placeHolderText = "emdad@ergo-ventures.com",
+            placeHolderText = "enter your username",
             textValue = "",
             textColor = textColorLightGray,
+            trailingIcon = Icons.Filled.AccountBox,
+            cursorColor = textColorLightGray,
+            onValueChanged = {},
+            onTrailingIconClick = {},
+            textStyle = Typography.h2,
+            enabled = true,
+            trailingIconClick = {},
+            textSize = 17.sp,
+
+            placeHolderTextColor = textColorLightGray
+
+        )
+
+        TextFieldComponent(
+            description = "Email Address",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 5.dp),
+            placeHolderText = "abc@xyz.com",
+            textValue = "",
             trailingIcon = Icons.Filled.Email,
+            textColor = textColorLightGray,
             cursorColor = textColorLightGray,
             onValueChanged = {},
             onTrailingIconClick = {},
