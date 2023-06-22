@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Super Compose App</string>
+    <string name="login_description">Login using Email and Password</string>
     <string name="fill_this_up_about_you_page">Fill this up so I can wish you on your \nbirthday (and you can give me a treat)</string>
 </resources>

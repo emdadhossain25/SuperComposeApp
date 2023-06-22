@@ -1,15 +1,19 @@
 package com.example.supercomposeapp.presentation.screen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,50 +26,41 @@ import com.example.supercomposeapp.ui.theme.darkMagneta
 import com.example.supercomposeapp.ui.theme.textColorLightGray
 import com.example.supercomposeapp.ui.theme.white
 
+
 @Composable
 fun UserInformationScreen() {
     Column(
         modifier = Modifier
-            .padding(top = 20.dp, start = 50.dp, end = 50.dp, bottom = 20.dp)
+            .padding(top = 40.dp, start = 50.dp, end = 50.dp, bottom = 20.dp),
 
-    ) {
+
+        ) {
         TextComponent(
             modifier = Modifier.fillMaxWidth(),
-            text = "about you",
+            text = "login",
             textColor = darkMagneta,
             fontSize = 35.sp,
             textStyle = Typography.h1,
         )
-
         TextComponent(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 5.dp),
-            text = stringResource(R.string.fill_this_up_about_you_page),
+            text = stringResource(R.string.login_description),
             textColor = textColorLightGray,
             fontSize = 17.sp,
             textStyle = Typography.h2
         )
-        TextFieldComponent(
-            description = "user name",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp),
-            placeHolderText = "enter your username",
-            textValue = "",
-            textColor = textColorLightGray,
-            trailingIcon = Icons.Filled.AccountBox,
-            cursorColor = textColorLightGray,
-            onValueChanged = {},
-            onTrailingIconClick = {},
-            textStyle = Typography.h2,
-            enabled = true,
-            trailingIconClick = {},
-            textSize = 17.sp,
+    }
+    Column(
+        modifier = Modifier
+            .padding(start = 50.dp, end = 50.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
 
-            placeHolderTextColor = textColorLightGray
 
-        )
+    ) {
+
 
         TextFieldComponent(
             description = "Email Address",
@@ -87,13 +82,34 @@ fun UserInformationScreen() {
             placeHolderTextColor = textColorLightGray
 
         )
+        TextFieldComponent(
+            description = "enter password",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp),
+            placeHolderText = "enter your password",
+            textValue = "textinput",
+            textColor = textColorLightGray,
+            trailingIcon = Icons.Filled.RemoveRedEye,
+            cursorColor = textColorLightGray,
+            onValueChanged = {},
+            onTrailingIconClick = {},
+            textStyle = Typography.h2,
+            enabled = true,
+            trailingIconClick = {},
+            textSize = 17.sp,
+            placeHolderTextColor = textColorLightGray,
+            visualTransformation = PasswordVisualTransformation()
+
+        )
+
 
 
         ButtonComponent(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 20.dp),
-            text = "save my profile",
+            text = "Login",
             backgroundColor = darkMagneta,
             contentColor = white,
             onButtonClick = { /*TODO*/ },
