@@ -1,6 +1,8 @@
 package com.example.supercomposeapp.domain.use_case
 
 import com.example.supercomposeapp.domain.model.RegistrationValidationType
+import com.example.supercomposeapp.util.containsNumbers
+import com.example.supercomposeapp.util.containsSpecialCharacters
 
 class ValidateRegistrationInputUseCase() {
 
@@ -16,6 +18,12 @@ class ValidateRegistrationInputUseCase() {
         if ("@" !in email) return RegistrationValidationType.NoEmail
 
         if (passwordField != retypePasswordField) return RegistrationValidationType.PasswordNotMatch
+
+        if (passwordField.count() < 8) return RegistrationValidationType.PasswordTooShort
+
+        if (!passwordField.containsNumbers()) return RegistrationValidationType.PasswordNumberMissing
+
+        if (!passwordField.containsSpecialCharacters()) return RegistrationValidationType.PasswordSpecialCharMissing
 
         return RegistrationValidationType.Valid
     }

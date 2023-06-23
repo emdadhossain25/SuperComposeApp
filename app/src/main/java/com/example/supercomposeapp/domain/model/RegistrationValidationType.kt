@@ -4,5 +4,10 @@ enum class RegistrationValidationType {
     EmptyField,
     NoEmail,
     PasswordNotMatch,
-    Valid,
+    PasswordUpperCaseMissing,
+    PasswordNumberMissing,
+    PasswordSpecialCharMissing,
+    PasswordTooShort,
+    Valid
+
 }

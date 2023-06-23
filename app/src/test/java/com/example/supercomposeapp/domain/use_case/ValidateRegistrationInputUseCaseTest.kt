@@ -1,8 +1,7 @@
 package com.example.supercomposeapp.domain.use_case
 
 import com.example.supercomposeapp.domain.model.RegistrationValidationType
-import com.google.common.truth.Truth
-import org.junit.Assert.*
+import com.google.common.truth.Truth.assertThat
 
 import org.junit.Before
 import org.junit.Test
@@ -15,6 +14,7 @@ class ValidateRegistrationInputUseCaseTest {
         sut = ValidateRegistrationInputUseCase()
     }
 
+
     @Test
     fun `validation type returns empty for email field`() {
         val result = sut.invoke(
@@ -22,7 +22,7 @@ class ValidateRegistrationInputUseCaseTest {
             passwordField = "asdf",
             retypePasswordField = "asdf"
         )
-        Truth.assertThat(result).isEqualTo(RegistrationValidationType.EmptyField)
+        assertThat(result).isEqualTo(RegistrationValidationType.EmptyField)
 
     }
 
@@ -33,7 +33,7 @@ class ValidateRegistrationInputUseCaseTest {
             passwordField = "",
             retypePasswordField = "asdf"
         )
-        Truth.assertThat(result).isEqualTo(RegistrationValidationType.EmptyField)
+        assertThat(result).isEqualTo(RegistrationValidationType.EmptyField)
 
     }
 
@@ -44,7 +44,7 @@ class ValidateRegistrationInputUseCaseTest {
             passwordField = "asdf",
             retypePasswordField = ""
         )
-        Truth.assertThat(result).isEqualTo(RegistrationValidationType.EmptyField)
+        assertThat(result).isEqualTo(RegistrationValidationType.EmptyField)
 
     }
 
@@ -55,7 +55,7 @@ class ValidateRegistrationInputUseCaseTest {
             passwordField = "asdf",
             retypePasswordField = "asdf"
         )
-        Truth.assertThat(result).isEqualTo(RegistrationValidationType.NoEmail)
+        assertThat(result).isEqualTo(RegistrationValidationType.NoEmail)
 
     }
 
@@ -66,7 +66,40 @@ class ValidateRegistrationInputUseCaseTest {
             passwordField = "asdf",
             retypePasswordField = "asdfw"
         )
-        Truth.assertThat(result).isEqualTo(RegistrationValidationType.PasswordNotMatch)
+        assertThat(result).isEqualTo(RegistrationValidationType.PasswordNotMatch)
+
+    }
+
+    @Test
+    fun `validation type returns password too short`() {
+        val result = sut.invoke(
+            email = "emdad@ergo-ventures.com",
+            passwordField = "Sasdf",
+            retypePasswordField = "Sasdf"
+        )
+        assertThat(result).isEqualTo(RegistrationValidationType.PasswordTooShort)
+
+    }
+
+    @Test
+    fun `validation type returns password missing Number`() {
+        val result = sut.invoke(
+            email = "emdad@ergo-ventures.com",
+            passwordField = "!Sasdfasdfas",
+            retypePasswordField = "!Sasdfasdfas"
+        )
+        assertThat(result).isEqualTo(RegistrationValidationType.PasswordNumberMissing)
+
+    }
+
+    @Test
+    fun `validation type returns password missing specialCharacters`() {
+        val result = sut.invoke(
+            email = "emdad@ergo-ventures.com",
+            passwordField = "1Sasdfasdfas",
+            retypePasswordField = "1Sasdfasdfas"
+        )
+        assertThat(result).isEqualTo(RegistrationValidationType.PasswordSpecialCharMissing)
 
     }
 
@@ -74,10 +107,10 @@ class ValidateRegistrationInputUseCaseTest {
     fun `validation type returns valid match`() {
         val result = sut.invoke(
             email = "emdad@ergo-ventures.com",
-            passwordField = "asdf",
-            retypePasswordField = "asdf"
+            passwordField = "2asdf12!",
+            retypePasswordField = "2asdf12!"
         )
-        Truth.assertThat(result).isEqualTo(RegistrationValidationType.Valid)
+        assertThat(result).isEqualTo(RegistrationValidationType.Valid)
 
     }
 }
