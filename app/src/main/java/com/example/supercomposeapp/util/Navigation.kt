@@ -10,8 +10,10 @@ fun Navigation() {
 
     NavHost(
         navController = navController,
-        startDestination =
-    )
+        startDestination = ScreenRoutes.LoginScreen.route
+    ) {
+
+    }
 }
 
 sealed class ScreenRoutes(val route: String) {
