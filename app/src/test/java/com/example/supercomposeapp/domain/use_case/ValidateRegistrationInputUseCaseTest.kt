@@ -17,7 +17,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns empty for email field`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "",
             passwordField = "asdf",
             retypePasswordField = "asdf"
@@ -28,7 +28,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns empty for password field`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
             passwordField = "",
             retypePasswordField = "asdf"
@@ -39,7 +39,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns empty for retypePassword field`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
             passwordField = "asdf",
             retypePasswordField = ""
@@ -50,7 +50,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns noemail for @ Sting inside email`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdadergo-ventures.com",
             passwordField = "asdf",
             retypePasswordField = "asdf"
@@ -61,7 +61,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns password does not match`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
             passwordField = "asdf",
             retypePasswordField = "asdfw"
@@ -72,7 +72,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns password too short`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
             passwordField = "Sasdf",
             retypePasswordField = "Sasdf"
@@ -83,7 +83,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns password missing Number`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
             passwordField = "!Sasdfasdfas",
             retypePasswordField = "!Sasdfasdfas"
@@ -94,7 +94,7 @@ class ValidateRegistrationInputUseCaseTest {
 
     @Test
     fun `validation type returns password missing specialCharacters`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
             passwordField = "1Sasdfasdfas",
             retypePasswordField = "1Sasdfasdfas"
@@ -103,12 +103,25 @@ class ValidateRegistrationInputUseCaseTest {
 
     }
 
+
+    @Test
+    fun `validation type returns password missing upper case`() {
+        val result = sut(
+            email = "emdad@ergo-ventures.com",
+            passwordField = "1asfdfadfsd!",
+            retypePasswordField = "1asfdfadfsd!"
+        )
+        assertThat(result).isEqualTo(RegistrationValidationType.PasswordUpperCaseMissing)
+
+    }
+
+
     @Test
     fun `validation type returns valid match`() {
-        val result = sut.invoke(
+        val result = sut(
             email = "emdad@ergo-ventures.com",
-            passwordField = "2asdf12!",
-            retypePasswordField = "2asdf12!"
+            passwordField = "2Aasdf12!",
+            retypePasswordField = "2Aasdf12!"
         )
         assertThat(result).isEqualTo(RegistrationValidationType.Valid)
 
