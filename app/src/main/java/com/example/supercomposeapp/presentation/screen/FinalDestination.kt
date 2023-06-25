@@ -19,7 +19,7 @@ fun FinalDestination() {
 
         ) {
         TextComponent(
-            text = "Final Destination",
+            text = "Congratulations",
             modifier = Modifier,
             textColor = darkMagneta,
             fontSize = 25.sp,

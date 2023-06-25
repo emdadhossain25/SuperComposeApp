@@ -1,7 +1,9 @@
 package com.example.supercomposeapp.presentation.screen
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -33,117 +35,112 @@ fun RegistrationScreen(
     onNavigateToLoginScreen: () -> Unit,
     registrationViewModel: RegistrationViewModel = hiltViewModel()
 ) {
-    Column(
-        modifier = Modifier
-            .padding(top = 40.dp, start = 50.dp, end = 50.dp, bottom = 20.dp),
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+
+        Column(
+            modifier = Modifier
+                .padding(top = 40.dp, start = 50.dp, end = 50.dp, bottom = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
 
 
         ) {
-        TextComponent(
-            modifier = Modifier.fillMaxWidth(),
-            text = "Register",
-            textColor = darkMagneta,
-            fontSize = 35.sp,
-            textStyle = Typography.h1,
-        )
-        TextComponent(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 5.dp),
-            text = stringResource(R.string.register_description),
-            textColor = textColorLightGray,
-            fontSize = 17.sp,
-            textStyle = Typography.h2
-        )
-    }
-    Column(
-        modifier = Modifier
-            .padding(start = 50.dp, end = 50.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            TextComponent(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Register",
+                textColor = darkMagneta,
+                fontSize = 35.sp,
+                textStyle = Typography.h1,
+            )
+            TextComponent(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 5.dp),
+                text = stringResource(R.string.register_description),
+                textColor = textColorLightGray,
+                fontSize = 17.sp,
+                textStyle = Typography.h2
+            )
 
 
-    ) {
+            TextFieldComponent(
+                description = "Email Address",
+                modifier = Modifier
+                    .fillMaxWidth(),
+                placeHolderText = "abc@xyz.com",
+                textValue = "",
+                trailingIcon = Icons.Filled.Email,
+                textColor = textColorLightGray,
+                cursorColor = textColorLightGray,
+                onValueChanged = {},
+                onTrailingIconClick = {},
+                textStyle = Typography.h2,
+                enabled = true,
+                trailingIconClick = {},
+                textSize = 17.sp,
 
+                placeHolderTextColor = textColorLightGray
 
-        TextFieldComponent(
-            description = "Email Address",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 5.dp),
-            placeHolderText = "abc@xyz.com",
-            textValue = "",
-            trailingIcon = Icons.Filled.Email,
-            textColor = textColorLightGray,
-            cursorColor = textColorLightGray,
-            onValueChanged = {},
-            onTrailingIconClick = {},
-            textStyle = Typography.h2,
-            enabled = true,
-            trailingIconClick = {},
-            textSize = 17.sp,
+            )
+            TextFieldComponent(
+                description = "enter password",
+                modifier = Modifier
+                    .fillMaxWidth(),
+                placeHolderText = "enter your password",
+                textValue = "textinput",
+                textColor = textColorLightGray,
+                trailingIcon = Icons.Filled.RemoveRedEye,
+                cursorColor = textColorLightGray,
+                onValueChanged = {},
+                onTrailingIconClick = {},
+                textStyle = Typography.h2,
+                enabled = true,
+                trailingIconClick = {},
+                textSize = 17.sp,
+                placeHolderTextColor = textColorLightGray,
+                visualTransformation = PasswordVisualTransformation()
 
-            placeHolderTextColor = textColorLightGray
+            )
 
-        )
-        TextFieldComponent(
-            description = "enter password",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp),
-            placeHolderText = "enter your password",
-            textValue = "textinput",
-            textColor = textColorLightGray,
-            trailingIcon = Icons.Filled.RemoveRedEye,
-            cursorColor = textColorLightGray,
-            onValueChanged = {},
-            onTrailingIconClick = {},
-            textStyle = Typography.h2,
-            enabled = true,
-            trailingIconClick = {},
-            textSize = 17.sp,
-            placeHolderTextColor = textColorLightGray,
-            visualTransformation = PasswordVisualTransformation()
+            TextFieldComponent(
+                description = "retype password",
+                modifier = Modifier
+                    .fillMaxWidth(),
+                placeHolderText = "enter your password",
+                textValue = "textinput",
+                textColor = textColorLightGray,
+                trailingIcon = Icons.Filled.RemoveRedEye,
+                cursorColor = textColorLightGray,
+                onValueChanged = {},
+                onTrailingIconClick = {},
+                textStyle = Typography.h2,
+                enabled = true,
+                trailingIconClick = {},
+                textSize = 17.sp,
+                placeHolderTextColor = textColorLightGray,
+                visualTransformation = PasswordVisualTransformation()
 
-        )
-
-        TextFieldComponent(
-            description = "retype password",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp),
-            placeHolderText = "enter your password",
-            textValue = "textinput",
-            textColor = textColorLightGray,
-            trailingIcon = Icons.Filled.RemoveRedEye,
-            cursorColor = textColorLightGray,
-            onValueChanged = {},
-            onTrailingIconClick = {},
-            textStyle = Typography.h2,
-            enabled = true,
-            trailingIconClick = {},
-            textSize = 17.sp,
-            placeHolderTextColor = textColorLightGray,
-            visualTransformation = PasswordVisualTransformation()
-
-        )
+            )
 
 
 
-        ButtonComponent(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 20.dp),
-            text = stringResource(R.string.register),
-            backgroundColor = darkMagneta,
-            contentColor = white,
-            onButtonClick = { /*TODO*/ },
-            isLoading = false,
-            borderColor = Color.Transparent,
-            buttonHeight = 40.dp,
-            fontSize = 20.sp,
-            style = Typography.h1
-        )
+            ButtonComponent(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                text = stringResource(R.string.register),
+                backgroundColor = darkMagneta,
+                contentColor = white,
+                onButtonClick = { /*TODO*/ },
+                isLoading = false,
+                borderColor = Color.Transparent,
+                buttonHeight = 45.dp,
+                fontSize = 24.sp,
+                style = Typography.h1
+            )
 
+
+        }
     }
 }
