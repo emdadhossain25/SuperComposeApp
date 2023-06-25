@@ -4,6 +4,7 @@ package com.example.supercomposeapp.presentation.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
 import com.example.supercomposeapp.domain.model.LoginInputValidationType
 import com.example.supercomposeapp.domain.use_case.ValidateLoginInputUseCase
 import com.example.supercomposeapp.presentation.state.LoginState
@@ -14,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginInputUseCase: ValidateLoginInputUseCase
-) {
+) : ViewModel() {
     var loginState by mutableStateOf(LoginState())
         private set
 
@@ -53,9 +54,11 @@ class LoginViewModel @Inject constructor(
             LoginInputValidationType.EmptyField -> {
                 loginState.copy(errorMessageInput = "Empty Fields", isInputValid = false)
             }
+
             LoginInputValidationType.NoEmail -> {
                 loginState.copy(errorMessageInput = "No valid email", isInputValid = false)
             }
+
             LoginInputValidationType.Valid -> {
                 loginState.copy(errorMessageInput = null, isInputValid = true)
             }

@@ -3,6 +3,7 @@ package com.example.supercomposeapp.presentation.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
 import com.example.supercomposeapp.domain.model.RegistrationValidationType
 import com.example.supercomposeapp.domain.use_case.ValidateRegistrationInputUseCase
 import com.example.supercomposeapp.presentation.state.RegistrationState
@@ -12,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
     val registrationInputUseCase: ValidateRegistrationInputUseCase
-) {
+): ViewModel() {
     var registrationState by mutableStateOf(RegistrationState())
         private set
 

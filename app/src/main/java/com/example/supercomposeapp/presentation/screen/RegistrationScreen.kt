@@ -13,13 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.supercomposeapp.R
 import com.example.supercomposeapp.presentation.components.ButtonComponent
 import com.example.supercomposeapp.presentation.components.TextComponent
 import com.example.supercomposeapp.presentation.components.TextFieldComponent
+import com.example.supercomposeapp.presentation.viewmodel.RegistrationViewModel
 import com.example.supercomposeapp.ui.theme.Typography
 import com.example.supercomposeapp.ui.theme.darkMagneta
 import com.example.supercomposeapp.ui.theme.textColorLightGray
@@ -27,7 +28,11 @@ import com.example.supercomposeapp.ui.theme.white
 
 
 @Composable
-fun RegistrationScreen() {
+fun RegistrationScreen(
+    onRegistationSuccessNavigation: () -> Unit,
+    onNavigateToLoginScreen: () -> Unit,
+    registrationViewModel: RegistrationViewModel = hiltViewModel()
+) {
     Column(
         modifier = Modifier
             .padding(top = 40.dp, start = 50.dp, end = 50.dp, bottom = 20.dp),
@@ -141,13 +146,4 @@ fun RegistrationScreen() {
         )
 
     }
-}
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-fun RegistrationScreenPreview() {
-    RegistrationScreen()
 }
