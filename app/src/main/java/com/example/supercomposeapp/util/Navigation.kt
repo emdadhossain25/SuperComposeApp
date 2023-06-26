@@ -33,7 +33,7 @@ fun Navigation() {
 
         composable(ScreenRoutes.RegisterScreen.route) {
             RegistrationScreen(
-                onRegistationSuccessNavigation = {
+                onRegistrationSuccessNavigation = {
                     navController.navigate(ScreenRoutes.FinalDestination.route) {
                         popUpTo(0)
                     }
