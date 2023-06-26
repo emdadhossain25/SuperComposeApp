@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.supercomposeapp.R
 import com.example.supercomposeapp.presentation.components.ButtonComponent
+import com.example.supercomposeapp.presentation.components.NavDestinationHelper
 import com.example.supercomposeapp.presentation.components.TextComponent
 import com.example.supercomposeapp.presentation.components.TextFieldComponent
 import com.example.supercomposeapp.presentation.viewmodel.LoginViewModel
@@ -41,6 +42,12 @@ fun LoginScreen(
     onNavigateToRegisterScreen: () -> Unit,
     loginViewModel: LoginViewModel = hiltViewModel()
 ) {
+
+    NavDestinationHelper(
+        shouldNavigate = { loginViewModel.loginState.isSuccessfullyLoggedIn },
+        destination = { onLoginSuccessNavigation() }
+    )
+
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -127,7 +134,8 @@ fun LoginContainer(
     onTrailingIconClick: () -> Unit,
     onLoginButtonClick: () -> Unit,
     errorHint: () -> String?,
-) {
+
+    ) {
 
     TextFieldComponent(
         description = "Email Address",

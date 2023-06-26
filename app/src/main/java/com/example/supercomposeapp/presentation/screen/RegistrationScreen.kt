@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.supercomposeapp.R
 import com.example.supercomposeapp.presentation.components.ButtonComponent
+import com.example.supercomposeapp.presentation.components.NavDestinationHelper
 import com.example.supercomposeapp.presentation.components.TextComponent
 import com.example.supercomposeapp.presentation.components.TextFieldComponent
 import com.example.supercomposeapp.presentation.viewmodel.RegistrationViewModel
@@ -40,6 +41,11 @@ fun RegistrationScreen(
     onNavigateToLoginScreen: () -> Unit,
     registrationViewModel: RegistrationViewModel = hiltViewModel()
 ) {
+
+    NavDestinationHelper(
+        shouldNavigate = { registrationViewModel.registrationState.isSuccessfullyRegistered },
+        destination = { onRegistrationSuccessNavigation() }
+    )
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -82,7 +88,8 @@ fun RegistrationScreen(
                 isRepeatPasswordShown = { registrationViewModel.registrationState.isRepeatPasswordShown },
                 isLoading = { registrationViewModel.registrationState.isLoading },
                 isEnabled = { registrationViewModel.registrationState.isValidInput },
-                errorHint = { registrationViewModel.registrationState.errorMessageInput }
+                errorHint = { registrationViewModel.registrationState.errorMessageInput },
+                onRegistrationClick = registrationViewModel::onRegistrationClick
             )
 
 
@@ -125,8 +132,8 @@ fun RegistrationContainer(
     isRepeatPasswordShown: () -> Boolean,
     isLoading: () -> Boolean,
     isEnabled: () -> Boolean,
-    errorHint: () -> String?
-
+    errorHint: () -> String?,
+    onRegistrationClick: () -> Unit
 
 ) {
 
@@ -200,7 +207,7 @@ fun RegistrationContainer(
         backgroundColor = if (isEnabled()) darkMagneta else textColorLightGray,
         enabled = isEnabled(),
         contentColor = white,
-        onButtonClick = { /*TODO*/ },
+        onButtonClick = onRegistrationClick,
         isLoading = isLoading(),
         borderColor = Color.Transparent,
         buttonHeight = 45.dp,
