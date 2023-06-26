@@ -47,8 +47,7 @@ fun TextFieldComponent(
     cursorColor: Color,
     placeHolderText: String,
     placeHolderTextColor: Color,
-    enabled: Boolean,
-    trailingIconClick: () -> Unit,
+    enabled: Boolean
 ) {
     Column(
         modifier = modifier
@@ -125,7 +124,6 @@ fun TextFieldComponentPreview() {
         onTrailingIconClick = {},
         textStyle = Typography.h2,
         enabled = true,
-        trailingIconClick = {},
         textSize = 18.sp,
         placeHolderTextColor = textColorLightGray
 

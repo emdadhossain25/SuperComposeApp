@@ -31,7 +31,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun onToggleVisualTransformation() {
-        loginState = loginState.copy(isPasswordShown = !loginState.isPasswordShown)
+        loginState = loginState.copy(isPasswordShowing = !loginState.isPasswordShowing)
         checkInputValidation()
     }
 

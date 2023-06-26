@@ -78,7 +78,6 @@ fun RegistrationScreen(
                 onTrailingIconClick = {},
                 textStyle = Typography.h2,
                 enabled = true,
-                trailingIconClick = {},
                 textSize = 17.sp,
 
                 placeHolderTextColor = textColorLightGray
@@ -97,7 +96,6 @@ fun RegistrationScreen(
                 onTrailingIconClick = {},
                 textStyle = Typography.h2,
                 enabled = true,
-                trailingIconClick = {},
                 textSize = 17.sp,
                 placeHolderTextColor = textColorLightGray,
                 visualTransformation = PasswordVisualTransformation()
@@ -117,7 +115,6 @@ fun RegistrationScreen(
                 onTrailingIconClick = {},
                 textStyle = Typography.h2,
                 enabled = true,
-                trailingIconClick = {},
                 textSize = 17.sp,
                 placeHolderTextColor = textColorLightGray,
                 visualTransformation = PasswordVisualTransformation()
