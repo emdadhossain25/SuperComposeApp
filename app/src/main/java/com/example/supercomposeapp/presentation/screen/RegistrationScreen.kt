@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -80,7 +81,8 @@ fun RegistrationScreen(
                 onRepeatPasswordTrailingIconClick = registrationViewModel::onToggleVisualTransformationForRepeatPassword,
                 isRepeatPasswordShown = { registrationViewModel.registrationState.isRepeatPasswordShown },
                 isLoading = { registrationViewModel.registrationState.isLoading },
-                isEnabled = { registrationViewModel.registrationState.isValidInput }
+                isEnabled = { registrationViewModel.registrationState.isValidInput },
+                errorHint = { registrationViewModel.registrationState.errorMessageInput }
             )
 
 
@@ -122,7 +124,8 @@ fun RegistrationContainer(
     onRepeatPasswordTrailingIconClick: () -> Unit,
     isRepeatPasswordShown: () -> Boolean,
     isLoading: () -> Boolean,
-    isEnabled: () -> Boolean
+    isEnabled: () -> Boolean,
+    errorHint: () -> String?
 
 
 ) {
@@ -184,7 +187,7 @@ fun RegistrationContainer(
         enabled = true,
         textSize = 17.sp,
         placeHolderTextColor = textColorLightGray,
-        visualTransformation = if (isRepeatPasswordShown()) PasswordVisualTransformation() else VisualTransformation.None
+        visualTransformation = if (isRepeatPasswordShown()) VisualTransformation.None else PasswordVisualTransformation()
 
     )
 
@@ -203,5 +206,9 @@ fun RegistrationContainer(
         buttonHeight = 45.dp,
         fontSize = 24.sp,
         style = Typography.h1
+    )
+    Text(
+        text = errorHint() ?: "",
+        style = MaterialTheme.typography.caption
     )
 }
